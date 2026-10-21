@@ -18,9 +18,6 @@ Live-ECG-Monitor-WebService is a comprehensive tool for analyzing electrocardiog
 
 ##  Screenshots
 
-![Dashboard Preview](https://ifh.cc/g/kDv4MK.jpg?height=300&width=600)
-
-![](https://ifh.cc/g/LNydLp.pngg?height=300&width=600)
 
 ##  Installation
 
