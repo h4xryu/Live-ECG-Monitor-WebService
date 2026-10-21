@@ -22,7 +22,7 @@ Live-ECG-Monitor-WebService is a comprehensive tool for analyzing electrocardiog
 
 ![](https://ifh.cc/g/LNydLp.pngg?height=300&width=600)
 
-## 🔧 Installation
+##  Installation
 
 ### Prerequisites
 
@@ -127,11 +127,6 @@ Segments are extracted around detected R-peaks:
 
 The application supports classification of ECG segments into five classes:
 
-- **N**: Normal beat
-- **S**: Supraventricular premature beat
-- **V**: Ventricular premature beat
-- **F**: Fusion beat
-- **Q**: Unknown beat
 
 
 ##  Technical Details
