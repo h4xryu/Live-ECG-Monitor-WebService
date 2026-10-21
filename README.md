@@ -1,9 +1,9 @@
-# ECG Analysis Application
+# Live-ECG-Monitor-WebService
 
 
-## 📋 Overview
+## Overview
 
-ECG Analysis Application is a comprehensive tool for analyzing electrocardiogram (ECG) data, detecting arrhythmias, and visualizing heart activity. This application provides real-time monitoring, file-based analysis, and machine learning-based classification of ECG segments.
+Live-ECG-Monitor-WebService is a comprehensive tool for analyzing electrocardiogram (ECG) data, detecting arrhythmias, and visualizing heart activity. This application provides real-time monitoring, file-based analysis, and machine learning-based classification of ECG segments.
 
 ##  Features
 
