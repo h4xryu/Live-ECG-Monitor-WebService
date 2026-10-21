@@ -1,0 +1,8 @@
+node_modules
+.next
+out
+.env*.local
+next-env.d.ts
+
+# user accounts + uploaded ECG data — never commit real user data
+/data
