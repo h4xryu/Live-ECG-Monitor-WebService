@@ -121,7 +121,7 @@ Header: `Authorization: Bearer <jwt>`
 Response `200`: `{ "state": { "updatedAt": ..., "fs": ..., "signal": [...], "leadOff": ...,
 "signalQuality": ..., "bpm": ..., "latestBeat": {...} | null } }`, or `{ "state": null }` if
 this user has never sent a live update (or the server restarted since). Meant to be polled
-(the `/live` dashboard page polls every second); check `updatedAt` against the current time
+(the homepage polls every second); check `updatedAt` against the current time
 and show a "disconnected" state once it's stale — don't just keep showing the last waveform as
 if it were current.
 

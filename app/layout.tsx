@@ -29,10 +29,12 @@ export default function RootLayout({
               <div className="min-h-screen flex flex-col">
                 <header className="border-b">
                   <div className="container mx-auto py-3 px-4 md:px-6 flex items-center justify-between">
-                    <h1 className="text-xl font-bold">ECG Arrhythmia Classification</h1>
+                    <Link href="/" className="text-xl font-bold hover:opacity-80">
+                      ECG Arrhythmia Classification
+                    </Link>
                     <div className="flex items-center gap-4">
-                      <Link href="/live" className="text-sm font-medium hover:underline">
-                        실시간
+                      <Link href="/tools" className="text-sm font-medium hover:underline">
+                        분석 도구
                       </Link>
                       <ThemeToggle />
                     </div>
