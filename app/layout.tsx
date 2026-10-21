@@ -1,6 +1,7 @@
 import type React from "react"
 import "@/app/globals.css"
 import { Inter } from "next/font/google"
+import Link from "next/link"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ECGDataProvider } from "@/context/ecg-data-context"
 import { ModelProvider } from "@/context/model-context"
@@ -29,7 +30,12 @@ export default function RootLayout({
                 <header className="border-b">
                   <div className="container mx-auto py-3 px-4 md:px-6 flex items-center justify-between">
                     <h1 className="text-xl font-bold">ECG Arrhythmia Classification</h1>
-                    <ThemeToggle />
+                    <div className="flex items-center gap-4">
+                      <Link href="/live" className="text-sm font-medium hover:underline">
+                        실시간
+                      </Link>
+                      <ThemeToggle />
+                    </div>
                   </div>
                 </header>
                 <main className="flex-1">{children}</main>
