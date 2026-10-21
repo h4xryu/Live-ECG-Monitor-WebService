@@ -4,6 +4,9 @@ import { requireAuth } from "@/lib/auth"
 import { saveEcgUpload } from "@/lib/db"
 
 const UploadSchema = z.object({
+  // The client's own local record id (e.g. Android's DiagnosisRecord.id). When present, a
+  // retried upload of the same id returns the already-saved record instead of duplicating it.
+  clientRecordId: z.string().trim().max(128).optional().nullable(),
   deviceId: z.string().trim().max(128).optional().nullable(),
   recordedAt: z.number(),
   fs: z.number().int().positive(),
@@ -25,6 +28,7 @@ export async function POST(req: NextRequest) {
 
   const saved = saveEcgUpload({
     userId: payload.sub,
+    clientRecordId: parsed.data.clientRecordId ?? null,
     deviceId: parsed.data.deviceId ?? null,
     recordedAt: parsed.data.recordedAt,
     fs: parsed.data.fs,

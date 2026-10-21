@@ -105,6 +105,7 @@ export default function LivePage() {
     }
   }, [poll, router])
 
+  const secondsAgo = state ? Math.max(0, Math.round((Date.now() - state.updatedAt) / 1000)) : 0
   const isStale = state ? Date.now() - state.updatedAt > STALE_MS : false
   const beat = state?.latestBeat
   const topIndex = beat ? beat.probs.indexOf(Math.max(...beat.probs)) : -1
@@ -159,7 +160,7 @@ export default function LivePage() {
             <Badge variant={state.leadOff ? "destructive" : "outline"}>
               {state.leadOff ? "전극 이탈 (Lead-off)" : "전극 정상"}
             </Badge>
-            {isStale && <Badge variant="outline">연결 끊김 — 마지막 수신: {new Date(state.updatedAt).toLocaleTimeString()}</Badge>}
+            {isStale && <Badge variant="destructive">연결 끊김 · 마지막 수신 {secondsAgo}초 전</Badge>}
             {topMeta && (
               <Badge style={{ backgroundColor: hexToRgba(topMeta.color, Math.max(0.25, topProb)) }}>
                 {topMeta.label} {(topProb * 100).toFixed(0)}%
@@ -194,7 +195,9 @@ export default function LivePage() {
                 </svg>
                 {(state.leadOff || isStale) && (
                   <div className="absolute inset-0 flex items-center justify-center bg-white/70 text-muted-foreground text-sm font-medium">
-                    {state.leadOff ? "전극이 떨어졌습니다" : "신호 수신 대기 중"}
+                    {isStale
+                      ? `연결 끊김 · 마지막 수신 ${secondsAgo}초 전`
+                      : "전극이 떨어졌습니다"}
                   </div>
                 )}
               </div>
