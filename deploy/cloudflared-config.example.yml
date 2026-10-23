@@ -1,0 +1,9 @@
+# Copy to ~/.cloudflared/config.yml and fill in the three placeholders.
+# <TUNNEL_ID> is printed by `cloudflared tunnel create ecg-backend`.
+tunnel: <TUNNEL_ID>
+credentials-file: /home/<USER>/.cloudflared/<TUNNEL_ID>.json
+
+ingress:
+  - hostname: api.example.com
+    service: http://localhost:3000
+  - service: http_status:404

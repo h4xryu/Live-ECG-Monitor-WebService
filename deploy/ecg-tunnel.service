@@ -1,0 +1,16 @@
+# systemd --user unit template for a Cloudflare *named* tunnel (fixed hostname). Installed by
+# scripts/install-always-on.sh only when ~/.cloudflared/config.yml exists.
+[Unit]
+Description=Cloudflare tunnel for Live ECG Monitor
+After=network-online.target ecg-web.service
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=@CLOUDFLARED_BIN@ tunnel --no-autoupdate --config %h/.cloudflared/config.yml run
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

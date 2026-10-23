@@ -1,5 +1,17 @@
 # Live-ECG-Monitor-WebService
 
+## 빠른 실행 (Quick start)
+
+```bash
+git clone https://github.com/h4xryu/Live-ECG-Monitor-WebService.git
+cd Live-ECG-Monitor-WebService
+./scripts/setup.sh   # pnpm install + .env.local (random JWT_SECRET) + pnpm build
+pnpm start           # http://localhost:3000
+```
+
+- 외부 접속(Cloudflare Tunnel), 재부팅 후 자동 실행(systemd), Android 앱 서버 주소: [docs/ALWAYS_ON.md](docs/ALWAYS_ON.md)
+- Android 앱이 쓰는 API (`/api/auth/*`, `/api/ecg/*`): [docs/BACKEND_API.md](docs/BACKEND_API.md)
+- 계정·업로드 데이터(`data/`)와 `.env.local` 은 git 에 올라가지 않습니다 — PC마다 따로입니다.
 
 ## Overview
 
@@ -18,8 +30,11 @@ Live-ECG-Monitor-WebService is a comprehensive tool for analyzing electrocardiog
 
 ##  Screenshots
 
+![Dashboard Preview](https://ifh.cc/g/kDv4MK.jpg?height=300&width=600)
 
-##  Installation
+![](https://ifh.cc/g/LNydLp.pngg?height=300&width=600)
+
+## 🔧 Installation
 
 ### Prerequisites
 
@@ -124,6 +139,11 @@ Segments are extracted around detected R-peaks:
 
 The application supports classification of ECG segments into five classes:
 
+- **N**: Normal beat
+- **S**: Supraventricular premature beat
+- **V**: Ventricular premature beat
+- **F**: Fusion beat
+- **Q**: Unknown beat
 
 
 ##  Technical Details

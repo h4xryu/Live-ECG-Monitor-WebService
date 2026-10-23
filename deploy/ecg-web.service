@@ -1,0 +1,22 @@
+# systemd --user unit template for the Next.js server. Installed (with @...@ filled in) by
+# scripts/install-always-on.sh — don't copy this file by hand.
+[Unit]
+Description=Live ECG Monitor web server (Next.js, port 3000)
+After=network-online.target
+Wants=network-online.target
+# Keep retrying forever: the repo may sit on a drive that mounts after boot.
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=@APP_DIR@
+Environment=NODE_ENV=production
+Environment=PATH=@NODE_DIR@:/usr/local/bin:/usr/bin:/bin
+# Fails (and is retried) until the drive is mounted and `pnpm build` has been run.
+ExecStartPre=/usr/bin/test -f @APP_DIR@/.next/BUILD_ID
+ExecStart=@PNPM_BIN@ start
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
